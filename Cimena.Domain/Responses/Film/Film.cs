@@ -14,6 +14,5 @@ namespace Cimena.Domain.Responses.Film
         public string Image { get; set; }
         public int CFId { get; set; }
 
-        ///ngân
     }
 }
