@@ -11,7 +11,7 @@ namespace Cimena.DAL
         protected IDbConnection conn;
         public BaseRepository()
         {
-            string connectionString = @"Data Source=DESKTOP-E754EJE\sqlexpress;Initial Catalog=MovieDB;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-RT5NF5I\sqlexpress;Initial Catalog=DatabaseCinema;Integrated Security=True";
             conn = new SqlConnection(connectionString);
         }
     }
