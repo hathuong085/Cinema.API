@@ -1,5 +1,6 @@
 ﻿using Cimena.BAL.INTERFACE;
 using Cimena.DAL.INTERFACE;
+using Cimena.Domain.Requests.Film;
 using Cimena.Domain.Responses.Film;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,9 +16,19 @@ namespace Cimena.BAL
             this.roomfilmRepository = roomfilmRepository;
         }
 
+        public Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests)
+        {
+            return roomfilmRepository.GetFilmsOfDay(requests);
+        }
+
         public Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
             return roomfilmRepository.GetFilmToDays();
+        }
+
+        public Task<IEnumerable<Film>> Homefilms()
+        {
+            return roomfilmRepository.Homefilms();
         }
     }
 }
