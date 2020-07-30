@@ -17,6 +17,7 @@ namespace Cimena.API.Controllers
         {
             this.roomFilmService = roomFilmService;
         }
+        [HttpGet]
         [Route("/api/RoomFilm/FilmToDays")]
         public async Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
