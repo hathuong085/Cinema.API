@@ -45,9 +45,8 @@ namespace Cimena.API
             app.UseSwagger(); 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee Management APIs");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cinema APIs");
             });
-
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
