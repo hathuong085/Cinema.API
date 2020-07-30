@@ -1,5 +1,8 @@
 ﻿using Cimena.BAL.INTERFACE;
+using Cimena.Domain.Responses.Film;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Cimena.API.Controllers
 {
@@ -14,6 +17,10 @@ namespace Cimena.API.Controllers
         {
             this.roomFilmService = roomFilmService;
         }
-       
+        [Route("/api/RoomFilm/FilmToDays")]
+        public async Task<IEnumerable<FilmToDay>> GetFilmToDays()
+        {
+            return await roomFilmService.GetFilmToDays();
+        }
     }
 }
