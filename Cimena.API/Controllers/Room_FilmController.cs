@@ -36,5 +36,23 @@ namespace Cimena.API.Controllers
         {
             return await roomFilmService.Homefilms();
         }
+        [HttpPost]
+        [Route("/api/Film/Create")]
+        public async Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
+        {
+            return await roomFilmService.CreateFilm(film);
+        }
+        [HttpPost]
+        [Route("/api/Film/Update")]
+        public async Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film)
+        {
+            return await roomFilmService.UpdateFilm(film);
+        }
+        [HttpDelete]
+        [Route("/api/Film/Delete/{id}")]
+        public async Task<SaveFilmResult> DeleteFilm(int id)
+        {
+            return await roomFilmService.DeleteFilm(id);
+        }
     }
 }
