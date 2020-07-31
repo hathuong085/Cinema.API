@@ -16,6 +16,16 @@ namespace Cimena.BAL
             this.roomfilmRepository = roomfilmRepository;
         }
 
+        public Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
+        {
+            return roomfilmRepository.CreateFilm(film);
+        }
+
+        public Task<SaveFilmResult> DeleteFilm(int filmId)
+        {
+            return roomfilmRepository.DeleteFilm(filmId);
+        }
+
         public Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests)
         {
             return roomfilmRepository.GetFilmsOfDay(requests);
@@ -29,6 +39,11 @@ namespace Cimena.BAL
         public Task<IEnumerable<Film>> Homefilms()
         {
             return roomfilmRepository.Homefilms();
+        }
+
+        public Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film)
+        {
+            return roomfilmRepository.UpdateFilm(film);
         }
     }
 }

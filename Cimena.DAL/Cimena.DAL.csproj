@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cimena.DAL.INTERFACE\Cimena.DAL.INTERFACE.csproj" />
+    <ProjectReference Include="..\Cimena.Domain\Cimena.Domain.csproj" />
   </ItemGroup>
 
 </Project>

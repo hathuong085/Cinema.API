@@ -10,6 +10,10 @@ namespace Cimena.DAL.INTERFACE
         Task<IEnumerable<FilmToDay>> GetFilmToDays();
         Task<ShowingsOfFilmOfDay> GetFilmsOfDay(ShowingsOfFilmOfDayRequeste requests);
         Task<IEnumerable<Film>> Homefilms();
+        Task<SaveFilmResult> CreateFilm(CreateFilmRequest film);
+        Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film);
+        Task<SaveFilmResult> DeleteFilm(int filmId);
+
 
     }
 }

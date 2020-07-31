@@ -39,5 +39,60 @@ namespace Cimena.DAL
         {
             return await SqlMapper.QueryAsync<Film>(conn, "sp_HomeFilms", CommandType.StoredProcedure);
         }
+
+        public async Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@FilmName", film.FilmName);
+                parameters.Add("@Title", film.Title);
+                parameters.Add("@Description", film.Description);
+                parameters.Add("@LinkTrailer", film.LinkTrailer);
+                parameters.Add("@Image", film.Image);
+                parameters.Add("@CategoryId", film.CategoryId);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveFilmResult>(cnn: conn,
+                                 param: parameters,
+                                sql: "CreateFilm",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@FilmId", film.FilmId);
+                parameters.Add("@FilmName", film.FilmName);
+                parameters.Add("@Title", film.Title);
+                parameters.Add("@Description", film.Description);
+                parameters.Add("@LinkTrailer", film.LinkTrailer);
+                parameters.Add("@Image", film.Image);
+                parameters.Add("@CategoryId", film.CategoryId);
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveFilmResult>(cnn: conn,
+                                 param: parameters,
+                                sql: "UpdateFilm",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<SaveFilmResult> DeleteFilm(int filmId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@FilmId", filmId);
+            return await SqlMapper.QueryFirstOrDefaultAsync<SaveFilmResult>(cnn: conn,
+                             param: parameters,
+                            sql: "sp_DeleteFilm",
+                            commandType: CommandType.StoredProcedure);
+        }
     }
 }
