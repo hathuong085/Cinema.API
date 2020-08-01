@@ -8,6 +8,7 @@ namespace Cimena.BAL.INTERFACE
 {
     public interface ICategoryFilmService
     {
-        Task<IEnumerable<CategoyryFilm>> GetCategories();
+        Task<IEnumerable<CategoyryFilmResult>> GetCategories();
+        Task<CategoryFilm> GetCategory(int cateId);
     }
 }

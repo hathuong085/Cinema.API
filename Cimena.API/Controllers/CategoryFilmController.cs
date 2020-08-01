@@ -20,9 +20,15 @@ namespace Cimena.API.Controllers
         }
         [HttpGet]
         [Route("/api/CategoryFilm/Gets")]
-        public async Task<IEnumerable<CategoyryFilm>> GetCategories()
+        public async Task<IEnumerable<CategoyryFilmResult>> GetCategories()
         {
             return await categoryFilmService.GetCategories();
+        }
+        [HttpGet]
+        [Route("/api/CategoryFilm/GetbyCateId/{id}")]
+        public async Task<CategoryFilm> GetCategoryById(int id)
+        {
+            return await categoryFilmService.GetCategory(id);
         }
     }
 }

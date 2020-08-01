@@ -8,6 +8,7 @@ namespace Cimena.BAL.INTERFACE
     public interface IFilmService
     {
         Task<IEnumerable<FilmToDay>> GetFilmToDays();
+        Task<IEnumerable<Film>> GetFilmByCateFilmId(int cateid);
         Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests);
         Task<IEnumerable<Film>> Homefilms();
         Task<SaveFilmResult> CreateFilm(CreateFilmRequest film);
