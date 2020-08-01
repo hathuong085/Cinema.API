@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 
 namespace Cimena.BAL.INTERFACE
 {
-    public interface IRoomFilmService
+    public interface IFilmService
     {
         Task<IEnumerable<FilmToDay>> GetFilmToDays();
         Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests);
         Task<IEnumerable<Film>> Homefilms();
+        Task<SaveFilmResult> CreateFilm(CreateFilmRequest film);
+        Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film);
+        Task<SaveFilmResult> DeleteFilm(int filmId);
     }
 
 }

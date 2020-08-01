@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 
 namespace Cimena.DAL.INTERFACE
 {
-    public interface IRoomFilmRepository
+    public interface IFilmRepository
     {
         Task<IEnumerable<FilmToDay>> GetFilmToDays();
         Task<ShowingsOfFilmOfDay> GetFilmsOfDay(ShowingsOfFilmOfDayRequeste requests);
         Task<IEnumerable<Film>> Homefilms();
+        Task<SaveFilmResult> CreateFilm(CreateFilmRequest film);
+        Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film);
+        Task<SaveFilmResult> DeleteFilm(int filmId);
+
 
     }
 }

@@ -1,19 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Cimena.BAL;
 using Cimena.BAL.INTERFACE;
 using Cimena.DAL;
 using Cimena.DAL.INTERFACE;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Cimena.API
 {
@@ -30,8 +23,10 @@ namespace Cimena.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IRoomFilmRepository, RoomFilmRepository>();
-            services.AddScoped<IRoomFilmService, RoomFilmService>();
+            services.AddScoped<IFilmRepository, FilmRepository>();
+            services.AddScoped<IFilmService, FilmService>();
+            services.AddScoped<ICategoryFilmRepository,CategoryFilmRepository>();
+            services.AddScoped<ICategoryFilmService,CategoryFilmService>();
             services.AddSwaggerGen();
         }
 

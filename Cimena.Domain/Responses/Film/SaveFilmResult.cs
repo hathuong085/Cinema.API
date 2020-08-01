@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Cimena.Domain.Responses.Film
 {
-    public class CategoyryFilm
+    public class SaveFilmResult
     {
-        public int CFId { get; set; }
-        public string CFName { get; set; }
+        public string Message { get; set; }
+        public int FilmId { get; set; }
     }
-
 }
