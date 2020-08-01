@@ -8,6 +8,7 @@ namespace Cimena.DAL.INTERFACE
 {
     public interface ICategoryFilmRepository
     {
-        Task<IEnumerable<CategoyryFilm>> GetCategories();
+        Task<IEnumerable<CategoyryFilmResult>> GetCategories();
+        Task<CategoryFilm> GetCategory(int cateId);
     }
 }

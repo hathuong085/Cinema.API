@@ -11,9 +11,19 @@ namespace Cimena.DAL
 {
     public class CategoryFilmRepository :BaseRepository,ICategoryFilmRepository
     {
-        public async Task<IEnumerable<CategoyryFilm>> GetCategories()
+        public async Task<IEnumerable<CategoyryFilmResult>> GetCategories()
         {
-            return await SqlMapper.QueryAsync<CategoyryFilm>(conn, "sp_GetCategories", CommandType.StoredProcedure);
+            return await SqlMapper.QueryAsync<CategoyryFilmResult>(conn, "sp_GetCategories", CommandType.StoredProcedure);
+        }
+
+        public async Task<CategoryFilm> GetCategory(int cateId)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateId);
+            return (await SqlMapper.QueryFirstOrDefaultAsync<CategoryFilm>(cnn: conn,
+                             param: parameters,
+                            sql: "sp_GetsCategoryFilmByCateFilmId",
+                            commandType: CommandType.StoredProcedure));
         }
     }
 }

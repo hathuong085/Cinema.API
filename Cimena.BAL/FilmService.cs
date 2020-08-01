@@ -31,6 +31,11 @@ namespace Cimena.BAL
             return filmRepository.GetFilmsOfDay(requests);
         }
 
+        public Task<IEnumerable<Film>> GetFilmByCateFilmId(int cateid)
+        {
+            return filmRepository.GetFilmByCateFilmId(cateid);
+        }
+
         public Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
             return filmRepository.GetFilmToDays();

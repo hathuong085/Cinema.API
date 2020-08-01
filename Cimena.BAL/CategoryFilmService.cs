@@ -17,9 +17,14 @@ namespace Cimena.BAL
             this.categoryFilmRepository = categoryFilmRepository;
         }
 
-        public Task<IEnumerable<CategoyryFilm>> GetCategories()
+        public Task<IEnumerable<CategoyryFilmResult>> GetCategories()
         {
             return categoryFilmRepository.GetCategories();
+        }
+
+        public Task<CategoryFilm> GetCategory(int cateId)
+        {
+            return categoryFilmRepository.GetCategory(cateId);
         }
     }
 }

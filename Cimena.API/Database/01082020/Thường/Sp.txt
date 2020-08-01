@@ -1,0 +1,122 @@
+﻿USE [MovieDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetCategories]    Script Date: 8/1/2020 4:04:10 PM ******/
+DROP PROCEDURE [dbo].[sp_GetCategories]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_DeleteFilm]    Script Date: 8/1/2020 4:04:10 PM ******/
+DROP PROCEDURE [dbo].[sp_DeleteFilm]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetsFilmByCategoryFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+DROP PROCEDURE [dbo].[sp_GetsFilmByCategoryFilmId]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetsCategoryFilmByCateFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+DROP PROCEDURE [dbo].[sp_GetsCategoryFilmByCateFilmId]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetsCategoryFilmByCateFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:		Hà Thường
+-- Create date: 29/07/2020
+-- Description: Get category film by CategoryFilmID
+-- =============================================
+Create PROCEDURE [dbo].[sp_GetsCategoryFilmByCateFilmId]
+@CateId int
+AS
+BEGIN
+	SELECT distinct * FROM CategoryFilm
+	WHERE CategoryId=@CateId
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetsFilmByCategoryFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:		Hà Thường
+-- Create date: 29/07/2020
+-- Description:	Show Film by CategoryFilmID
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_GetsFilmByCategoryFilmId]
+@CateId int
+AS
+BEGIN
+	SELECT distinct * FROM Film f
+	WHERE CategoryId=@CateId
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_DeleteFilm]    Script Date: 8/1/2020 4:04:10 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+-- =============================================
+-- Author:		Ngân Bùi
+-- Create date: 31/07/2020
+-- Description:	Delete Film
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_DeleteFilm]
+    @FilmId INT
+AS
+BEGIN
+DECLARE @Message NVARCHAR(200) = 'Something went wrong, please try again'
+	BEGIN TRY
+		
+
+	DELETE FROM [dbo].[Film]
+    WHERE @FilmId = FilmId
+
+	SET @Message = 'film has been deleted successfully!'
+	SELECT @FilmId AS FilmId, @Message AS [Message]
+
+
+	END TRY
+	BEGIN CATCH
+		SELECT @FilmId AS FilmId, @Message AS [Message]
+	END CATCH
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetCategories]    Script Date: 8/1/2020 4:04:10 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+-- =============================================
+-- Author:		Ngân Bùi
+-- Create date: 31/07/2020
+-- Description:	Get categories
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_GetCategories]
+AS
+BEGIN
+	select cf.CategoryId,cf.CategoryName,
+	(select count(*) from Film f where f.CategoryId=cf.CategoryId) as [Count]
+	From CategoryFilm cf
+END
+GO
+

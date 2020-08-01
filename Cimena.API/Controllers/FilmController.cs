@@ -24,6 +24,12 @@ namespace Cimena.API.Controllers
         {
             return await filmService.GetFilmToDays();
         }
+        [HttpGet]
+        [Route("/api/Films/Category/{id}")]
+        public async Task<IEnumerable<Film>> GetFilmByCateFilmId(int id)
+        {
+            return await filmService.GetFilmByCateFilmId(id);
+        }
         [HttpPost]
         [Route("/api/Home/ShowingsOfFilmOfDay")]
         public async Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests)
