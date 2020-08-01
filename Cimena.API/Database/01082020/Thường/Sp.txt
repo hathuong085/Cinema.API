@@ -1,23 +1,69 @@
 ﻿USE [MovieDB]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetCategories]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetCategories]    Script Date: 8/1/2020 6:01:06 PM ******/
 DROP PROCEDURE [dbo].[sp_GetCategories]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_DeleteFilm]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_DeleteFilm]    Script Date: 8/1/2020 6:01:06 PM ******/
 DROP PROCEDURE [dbo].[sp_DeleteFilm]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetsFilmByCategoryFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetsFilmByCategoryFilmId]    Script Date: 8/1/2020 6:01:06 PM ******/
 DROP PROCEDURE [dbo].[sp_GetsFilmByCategoryFilmId]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetsCategoryFilmByCateFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetsCategoryFilmByCateFilmId]    Script Date: 8/1/2020 6:01:06 PM ******/
 DROP PROCEDURE [dbo].[sp_GetsCategoryFilmByCateFilmId]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetsCategoryFilmByCateFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_deleteshowedsByTimes]    Script Date: 8/1/2020 6:01:06 PM ******/
+DROP PROCEDURE [dbo].[sp_deleteshowedsByTimes]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_deleteshowedsByTimes]    Script Date: 8/1/2020 6:01:06 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:		Hà Thường
+-- Create date: 01/08/2020
+-- Description:	Chuyển trạng thái xuất chiếu từ đang chiếu "on" đã chiếu "off" 
+--bởi thời gian chiếu trước thời gian hiện tại
+
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_deleteshowedsByTimes]
+AS
+BEGIN
+		UPDATE [dbo].[Showing]
+		   SET [StatusId] = 2
+		 WHERE ShowingId in (select sw.ShowingId from Showing sw INNER JOIN TimeShows ts on ts.TimeshowId=sw.TimeshowId
+											INNER JOIN [Time] t on t.TimeId=ts.TimeId
+				where year(sw.Dayshow)<year(GETDATE())
+				or  Month(sw.Dayshow)<Month(GETDATE()) 
+						and year(sw.Dayshow)=year(GETDATE())
+				or (DAY(sw.Dayshow)<DAY(GETDATE()) 
+					and Month(sw.Dayshow)=Month(GETDATE()) 
+						and year(sw.Dayshow)=year(GETDATE()))
+				or DATEPART(HOUR,t.StartTime)< DATEPART(HOUR,GETDATE())
+					and (DAY(sw.Dayshow)=DAY(GETDATE()) 
+						and Month(sw.Dayshow)=Month(GETDATE()) 
+							and year(sw.Dayshow)=year(GETDATE()))
+				or DATEPART(MINUTE,t.StartTime)< DATEPART(MINUTE,GETDATE())
+					and DATEPART(HOUR,t.StartTime)=DATEPART(HOUR,GETDATE())
+						and (DAY(sw.Dayshow)=DAY(GETDATE()) 
+							and Month(sw.Dayshow)=Month(GETDATE()) 
+								and year(sw.Dayshow)=year(GETDATE()))
+				)
+	SELECT 'Deleted success!' AS [Message]
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetsCategoryFilmByCateFilmId]    Script Date: 8/1/2020 6:01:06 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -39,7 +85,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetsFilmByCategoryFilmId]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetsFilmByCategoryFilmId]    Script Date: 8/1/2020 6:01:06 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -61,7 +107,7 @@ BEGIN
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_DeleteFilm]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_DeleteFilm]    Script Date: 8/1/2020 6:01:06 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -97,7 +143,7 @@ DECLARE @Message NVARCHAR(200) = 'Something went wrong, please try again'
 END
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_GetCategories]    Script Date: 8/1/2020 4:04:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_GetCategories]    Script Date: 8/1/2020 6:01:06 PM ******/
 SET ANSI_NULLS ON
 GO
 
