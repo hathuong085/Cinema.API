@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cimena.BAL.INTERFACE
 {
-    public interface IRoomFilmService
+    public interface IFilmService
     {
         Task<IEnumerable<FilmToDay>> GetFilmToDays();
         Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests);

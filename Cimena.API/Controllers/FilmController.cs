@@ -9,50 +9,50 @@ namespace Cimena.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class Room_FilmController
+    public class FilmController
     {
         //private readonly ILogger<DepartmentController> _logger;
-        private readonly IRoomFilmService roomFilmService;
+        private readonly IFilmService filmService;
 
-        public Room_FilmController(IRoomFilmService roomFilmService)
+        public FilmController(IFilmService filmService)
         {
-            this.roomFilmService = roomFilmService;
+            this.filmService = filmService;
         }
         [HttpGet]
-        [Route("/api/RoomFilm/FilmToDays")]
+        [Route("/api/Home/FilmToDays")]
         public async Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
-            return await roomFilmService.GetFilmToDays();
+            return await filmService.GetFilmToDays();
         }
         [HttpPost]
-        [Route("/api/RoomFilm/ShowingsOfFilmOfDay")]
+        [Route("/api/Home/ShowingsOfFilmOfDay")]
         public async Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests)
         {
-            return await roomFilmService.Get(requests);
+            return await filmService.Get(requests);
         }
         [HttpGet]
-        [Route("/api/RoomFilm/Home")]
+        [Route("/api/Home/Film")]
         public async Task<IEnumerable<Film>> Home()
         {
-            return await roomFilmService.Homefilms();
+            return await filmService.Homefilms();
         }
         [HttpPost]
         [Route("/api/Film/Create")]
         public async Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
         {
-            return await roomFilmService.CreateFilm(film);
+            return await filmService.CreateFilm(film);
         }
         [HttpPost]
         [Route("/api/Film/Update")]
         public async Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film)
         {
-            return await roomFilmService.UpdateFilm(film);
+            return await filmService.UpdateFilm(film);
         }
         [HttpDelete]
         [Route("/api/Film/Delete/{id}")]
         public async Task<SaveFilmResult> DeleteFilm(int id)
         {
-            return await roomFilmService.DeleteFilm(id);
+            return await filmService.DeleteFilm(id);
         }
     }
 }

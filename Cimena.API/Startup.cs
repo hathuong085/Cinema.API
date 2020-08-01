@@ -23,8 +23,8 @@ namespace Cimena.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IRoomFilmRepository, RoomFilmRepository>();
-            services.AddScoped<IRoomFilmService, RoomFilmService>();
+            services.AddScoped<IFilmRepository, FilmRepository>();
+            services.AddScoped<IFilmService, FilmService>();
             services.AddScoped<ICategoryFilmRepository,CategoryFilmRepository>();
             services.AddScoped<ICategoryFilmService,CategoryFilmService>();
             services.AddSwaggerGen();

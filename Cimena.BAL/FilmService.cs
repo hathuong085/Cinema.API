@@ -7,43 +7,43 @@ using System.Threading.Tasks;
 
 namespace Cimena.BAL
 {
-    public class RoomFilmService : IRoomFilmService
+    public class FilmService : IFilmService
     {
-        private readonly IRoomFilmRepository roomfilmRepository;
+        private readonly IFilmRepository filmRepository;
 
-        public RoomFilmService(IRoomFilmRepository roomfilmRepository)
+        public FilmService(IFilmRepository filmRepository)
         {
-            this.roomfilmRepository = roomfilmRepository;
+            this.filmRepository = filmRepository;
         }
 
         public Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
         {
-            return roomfilmRepository.CreateFilm(film);
+            return filmRepository.CreateFilm(film);
         }
 
         public Task<SaveFilmResult> DeleteFilm(int filmId)
         {
-            return roomfilmRepository.DeleteFilm(filmId);
+            return filmRepository.DeleteFilm(filmId);
         }
 
         public Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests)
         {
-            return roomfilmRepository.GetFilmsOfDay(requests);
+            return filmRepository.GetFilmsOfDay(requests);
         }
 
         public Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
-            return roomfilmRepository.GetFilmToDays();
+            return filmRepository.GetFilmToDays();
         }
 
         public Task<IEnumerable<Film>> Homefilms()
         {
-            return roomfilmRepository.Homefilms();
+            return filmRepository.Homefilms();
         }
 
         public Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film)
         {
-            return roomfilmRepository.UpdateFilm(film);
+            return filmRepository.UpdateFilm(film);
         }
     }
 }

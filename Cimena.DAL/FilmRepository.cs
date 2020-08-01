@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cimena.DAL
 {
-    public class RoomFilmRepository : BaseRepository, IRoomFilmRepository
+    public class FilmRepository : BaseRepository, IFilmRepository
     {
         public async Task<ShowingsOfFilmOfDay> GetFilmsOfDay(ShowingsOfFilmOfDayRequeste requests)
         {
