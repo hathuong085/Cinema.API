@@ -60,5 +60,11 @@ namespace Cimena.API.Controllers
         {
             return await filmService.DeleteFilm(id);
         }
+        [HttpGet]
+        [Route("/api/Film/Get/{id}")]
+        public async Task<Film> Get(int id)
+        {
+            return await filmService.Get(id);
+        }
     }
 }
