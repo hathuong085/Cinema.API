@@ -12,5 +12,6 @@ namespace Cimena.BAL.INTERFACE
         Task<MessageSuccess> DeleteShowingByTime();
         Task<IEnumerable<Dayshow>> DayShowOfFilm(int id);
         Task<IEnumerable<TimeShow>> ScreeningFilmOfDate(ShowingOfFilmOfDayRequests request);
+        Task<IEnumerable<Seat>> SeatsOfShowing(int id);
     }
 }

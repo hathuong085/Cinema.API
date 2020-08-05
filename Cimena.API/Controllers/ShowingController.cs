@@ -37,5 +37,11 @@ namespace Cimena.API.Controllers
         {
             return await showingService.ScreeningFilmOfDate(request);
         }
+        [HttpGet]
+        [Route("/api/Showing/Seats/{id}")]
+        public async Task<IEnumerable<Seat>> SeatsOfShowing(int id)
+        {
+            return await showingService.SeatsOfShowing(id);
+        }
     }
 }
