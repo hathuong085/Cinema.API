@@ -32,5 +32,10 @@ namespace Cimena.BAL
         {
             return showingRepository.ScreeningFilmOfDate(request);
         }
+
+        public Task<IEnumerable<Seat>> SeatsOfShowing(int id)
+        {
+            return showingRepository.SeatsOfShowing(id);
+        }
     }
 }

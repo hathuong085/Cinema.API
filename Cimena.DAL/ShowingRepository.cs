@@ -32,5 +32,12 @@ namespace Cimena.DAL
             return await SqlMapper.QueryAsync<TimeShow>(cnn: conn, sql: "sp_ShowingsOfFilmOf1Day", param: parameters, commandType: CommandType.StoredProcedure);
 
         }
+
+        public async Task<IEnumerable<Seat>> SeatsOfShowing(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@showingId", id);
+            return await SqlMapper.QueryAsync<Seat>(cnn: conn, sql: "sp_SeatsOfShowing", param: parameters, commandType: CommandType.StoredProcedure);
+        }
     }
 }
