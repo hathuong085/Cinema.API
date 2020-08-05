@@ -1,4 +1,5 @@
 ﻿using Cimena.BAL.INTERFACE;
+using Cimena.Domain.Requests.ShowFilm;
 using Cimena.Domain.Responses.Showing;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,6 +24,18 @@ namespace Cimena.API.Controllers
         public async Task<MessageSuccess> DeleteFilm()
         {
             return await showingService.DeleteShowingByTime();
+        }
+        [HttpGet]
+        [Route("/api/Showing/DayShowOfFilm/{id}")]
+        public async Task<IEnumerable<Dayshow>> DayShowOfFilm(int id)
+        {
+            return await showingService.DayShowOfFilm(id);
+        }
+        [HttpPost]
+        [Route("/api/Showing/ScreeningFilmOfDate")]
+        public async Task<IEnumerable<TimeShow>> ScreeningFilmOfDate(ShowingOfFilmOfDayRequests request)
+        {
+            return await showingService.ScreeningFilmOfDate(request);
         }
     }
 }
