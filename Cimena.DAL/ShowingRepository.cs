@@ -24,6 +24,13 @@ namespace Cimena.DAL
             return await SqlMapper.QueryFirstOrDefaultAsync<MessageSuccess>(conn, "sp_deleteshowedsByTimes", CommandType.StoredProcedure);
         }
 
+        public async Task<DescriptionShowing> DescriptionShowing(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@showingId", id);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DescriptionShowing>(cnn: conn, sql: "sp_DescriptionOfShowing", param: parameters, commandType: CommandType.StoredProcedure);
+        }
+
         public async Task<IEnumerable<TimeShow>> ScreeningFilmOfDate(ShowingOfFilmOfDayRequests request)
         {
             DynamicParameters parameters = new DynamicParameters();

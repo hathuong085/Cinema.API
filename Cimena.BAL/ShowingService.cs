@@ -28,6 +28,11 @@ namespace Cimena.BAL
             return showingRepository.DeleteShowingByTime();
         }
 
+        public Task<DescriptionShowing> DescriptionShowing(int id)
+        {
+            return showingRepository.DescriptionShowing(id);
+        }
+
         public Task<IEnumerable<TimeShow>> ScreeningFilmOfDate(ShowingOfFilmOfDayRequests request)
         {
             return showingRepository.ScreeningFilmOfDate(request);
