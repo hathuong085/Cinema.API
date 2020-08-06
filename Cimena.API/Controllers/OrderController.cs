@@ -14,10 +14,10 @@ namespace Cimena.API.Controllers
     public class OrderController : ControllerBase
     {
         private readonly ILogger<OrderController> _logger;
-        private readonly BAL.IOrderService orderService;
+        private readonly IOrderService orderService;
 
         public OrderController(ILogger<OrderController> logger,
-                                    BAL.IOrderService orderService)
+                                    IOrderService orderService)
         {
             _logger = logger;
             this.orderService = orderService;
