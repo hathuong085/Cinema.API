@@ -29,6 +29,10 @@ namespace Cimena.API
             services.AddScoped<ICategoryFilmService,CategoryFilmService>();
             services.AddScoped<IShowingRepository, ShowingRepository>();
             services.AddScoped<IShowingService, ShowingService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IComboFoodRepository, ComboFoodRepository>();
+            services.AddScoped<IComboFoodService, ComboFoodService>();
             services.AddSwaggerGen();
         }
 
