@@ -43,5 +43,11 @@ namespace Cimena.API.Controllers
         {
             return await showingService.SeatsOfShowing(id);
         }
+        [HttpGet]
+        [Route("/api/Showing/Description/{id}")]
+        public async Task<DescriptionShowing> DescriptionShowing(int id)
+        {
+            return await showingService.DescriptionShowing(id);
+        }
     }
 }
