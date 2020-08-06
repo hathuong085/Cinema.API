@@ -24,6 +24,12 @@ namespace Cimena.API.Controllers
         {
             return await filmService.GetFilmToDays();
         }
+        [HttpGet]
+        [Route("/api/Films/Category/{id}")]
+        public async Task<IEnumerable<Film>> GetFilmByCateFilmId(int id)
+        {
+            return await filmService.GetFilmByCateFilmId(id);
+        }
         [HttpPost]
         [Route("/api/Home/ShowingsOfFilmOfDay")]
         public async Task<ShowingsOfFilmOfDay> Get(ShowingsOfFilmOfDayRequeste requests)
@@ -53,6 +59,12 @@ namespace Cimena.API.Controllers
         public async Task<SaveFilmResult> DeleteFilm(int id)
         {
             return await filmService.DeleteFilm(id);
+        }
+        [HttpGet]
+        [Route("/api/Film/Get/{id}")]
+        public async Task<Film> Get(int id)
+        {
+            return await filmService.Get(id);
         }
     }
 }
