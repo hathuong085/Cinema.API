@@ -19,6 +19,8 @@ namespace Cimena.DAL
                             commandType: CommandType.StoredProcedure);
         }
 
+
+
         public async Task<Order> Get(int orderid)
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -42,6 +44,7 @@ namespace Cimena.DAL
                 parameters.Add("@OrderId", request.OrderId);
                 parameters.Add("@ComboFoodId", request.ComboFoodId);
                 parameters.Add("@Count", request.Count);
+                parameters.Add("@BookFilmId", request.BookFilmId);
                 //parameters.Add("@TotalPrice", request.TotalPrice);
                 return (await SqlMapper.QueryFirstOrDefaultAsync<SaveOrderResult>(cnn: conn,
                                             sql: "InsertEditOrder",

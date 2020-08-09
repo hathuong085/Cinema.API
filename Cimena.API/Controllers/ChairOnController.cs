@@ -22,7 +22,7 @@ namespace Cimena.API.Controllers
             return await chairOnService.CreateChairOn(request);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("/api/chairOn/delete")]
         public async Task<DeleteChairOnResult> DeleteChairOn(ChairOn request)
         {
