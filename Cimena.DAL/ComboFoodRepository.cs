@@ -43,6 +43,7 @@ namespace Cimena.DAL
                 parameters.Add("@ComboFoodId", request.ComboFoodId);
                 parameters.Add("@ComboName", request.ComboName);
                 parameters.Add("@Price", request.Price);
+                parameters.Add("@ImageCombo", request.ImageCombo);
                 //parameters.Add("@TotalPrice", request.TotalPrice);
                 return (await SqlMapper.QueryFirstOrDefaultAsync<SaveComboFoodResult>(cnn: conn,
                                             sql: "InsertEditComboFood",

@@ -31,6 +31,10 @@ namespace Cimena.API
             services.AddScoped<IShowingService, ShowingService>();
             services.AddScoped<IChairOnRepository, ChairOnRepository>();
             services.AddScoped<IChairOnService, ChairOnService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IComboFoodRepository, ComboFoodRepository>();
+            services.AddScoped<IComboFoodService, ComboFoodService>();
             services.AddSwaggerGen();
         }
 
