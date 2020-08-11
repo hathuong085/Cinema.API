@@ -16,6 +16,8 @@ namespace Cimena.DAL.INTERFACE
         Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film);
         Task<SaveFilmResult> DeleteFilm(int filmId);
 
-
+        Task<IEnumerable<Film>> GetFilmScreened(int cateid);
+        Task<IEnumerable<Film>> GetFilmNowShowing(int cateid);
+        Task<IEnumerable<Film>> GetfilmUpComing(int cateid);
     }
 }

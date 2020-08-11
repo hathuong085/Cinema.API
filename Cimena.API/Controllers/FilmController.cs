@@ -66,5 +66,24 @@ namespace Cimena.API.Controllers
         {
             return await filmService.Get(id);
         }
+        [HttpGet]
+        [Route("/api/film/getfilmscreened/{id}")]
+        public async Task<IEnumerable<Film>> GetFilmScreened(int id)
+        {
+            return await filmService.GetFilmScreened(id);
+        }
+        [HttpGet]
+        [Route("/api/film/GetfilmUpComing/{id}")]
+        public async Task<IEnumerable<Film>> GetfilmUpComing(int id)
+        {
+            return await filmService.GetfilmUpComing(id);
+        }
+        [HttpGet]
+        [Route("/api/film/GetFilmNowShowing/{id}")]
+        public async Task<IEnumerable<Film>> GetFilmNowShowing(int id)
+        {
+            return await filmService.GetFilmNowShowing(id);
+        }
+        
     }
 }
