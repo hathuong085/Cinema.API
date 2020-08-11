@@ -41,9 +41,28 @@ namespace Cimena.BAL
             return filmRepository.GetFilmByCateFilmId(cateid);
         }
 
+        /// <summary>
+        /// lấy ra các phim đã chiếu của 1 loại phim
+        /// </summary>
+        /// <param name="cateid"></param>
+        /// <returns></returns>
+        public Task<IEnumerable<Film>> GetFilmScreened(int cateid)
+        {
+            return filmRepository.GetFilmScreened(cateid);
+        }
+
         public Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
             return filmRepository.GetFilmToDays();
+        }
+
+        public Task<IEnumerable<Film>> GetfilmUpComing(int cateid)
+        {
+            return filmRepository.GetfilmUpComing(cateid);
+        }
+        public Task<IEnumerable<Film>> GetFilmNowShowing(int cateid)
+        {
+            return filmRepository.GetFilmNowShowing(cateid);
         }
 
         public Task<IEnumerable<Film>> Homefilms()
@@ -55,5 +74,6 @@ namespace Cimena.BAL
         {
             return filmRepository.UpdateFilm(film);
         }
+        
     }
 }

@@ -114,5 +114,35 @@ namespace Cimena.DAL
                             sql: "sp_GetFilmById",
                             commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<IEnumerable<Film>> GetFilmScreened(int cateid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateid);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_GetFilmScreened",
+                       commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<Film>> GetfilmUpComing(int cateid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateid);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_GetfilmUpComing",
+                       commandType: CommandType.StoredProcedure);
+        }
+        public async Task<IEnumerable<Film>> GetFilmNowShowing(int cateid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateid);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_GetFilmNowShowing",
+                       commandType: CommandType.StoredProcedure);
+        }
+        
     }
 }
