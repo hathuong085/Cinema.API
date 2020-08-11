@@ -39,6 +39,8 @@ namespace Cimena.API
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IBookFilmRepository, BookFilmRepository>();
             services.AddScoped<IBookFilmService, BookFilmService>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IRoomSevice, RoomSevice>();
             services.AddSwaggerGen();
         }
 
