@@ -92,5 +92,12 @@ namespace Cimena.API.Controllers
             return await filmService.Getfilmsbyrate();
         }
 
+        [HttpPost]
+        [Route("/api/film/Searchfilm")]
+        public async Task<IEnumerable<Film>> Searchfilm(KeySearch Key)
+        {
+            return await filmService.Searchfilm(Key);
+        }
+
     }
 }

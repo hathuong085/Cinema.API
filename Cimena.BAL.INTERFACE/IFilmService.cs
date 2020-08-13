@@ -19,6 +19,8 @@ namespace Cimena.BAL.INTERFACE
         Task<IEnumerable<Film>> GetfilmUpComing(int cateid);
         Task<IEnumerable<Film>> GetFilmNowShowing(int cateid);
         Task<IEnumerable<Film>> Getfilmsbyrate();
+
+        Task<IEnumerable<Film>> Searchfilm(KeySearch Key);
     }
 
 }
