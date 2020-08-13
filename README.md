@@ -10,3 +10,5 @@
   + Dapper
 - Packages:
   + Swashbuckle.AspNetCore(5.5.1)
+- Stored Procedure:
+  + <a href="https://github.com/hathuong085/Cinema.API/blob/Developer/Cimena.API/Database/SP_13082020/sp_of_repository_combo.txt"> SP_ComboRepository  </a>
