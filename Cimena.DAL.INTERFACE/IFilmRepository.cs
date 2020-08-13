@@ -20,5 +20,7 @@ namespace Cimena.DAL.INTERFACE
         Task<IEnumerable<Film>> GetFilmNowShowing(int cateid);
         Task<IEnumerable<Film>> GetfilmUpComing(int cateid);
         Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day);
+        Task<IEnumerable<Film>> Getfilmsbyrate();
+        Task<IEnumerable<Film>> Searchfilm(KeySearch Key);
     }
 }
