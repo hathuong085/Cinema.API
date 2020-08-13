@@ -11,5 +11,7 @@ namespace Cimena.BAL.INTERFACE
         Task<ComboFood> Get(int cfid);
         Task<SaveComboFoodResult> SaveComboFood(ComboFood request);
         Task<DeleteCFResult> DeleteComboFood(int cfid);
+        Task<DeleteCFResult> RestoreComboFood(int cfid);
+        Task<IEnumerable<ComboFoodAll>> GetAll();
     }
 }

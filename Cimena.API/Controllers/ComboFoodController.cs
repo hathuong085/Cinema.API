@@ -23,7 +23,7 @@ namespace Cimena.API
         }
 
         /// <summary>
-        /// Get all ComboFood in DB
+        /// Get ComboFood in DB where isdelete=false
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -32,7 +32,16 @@ namespace Cimena.API
         {
             return await comboFoodService.Gets();
         }
-
+        /// <summary>
+        /// Get all combofood
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/combofood/getall")]
+        public async Task<IEnumerable<ComboFood>> GetAll()
+        {
+            return await comboFoodService.GetAll();
+        }
         /// <summary>
         /// Get ComboFood by id
         /// </summary>
@@ -57,6 +66,12 @@ namespace Cimena.API
         public async Task<DeleteCFResult> DeleteComboFood(int id)
         {
             return await comboFoodService.DeleteComboFood(id);
+        }
+        [HttpGet]
+        [Route("/api/combofood/restore/{id}")]
+        public async Task<DeleteCFResult> RestoreComboFood(int id)
+        {
+            return await comboFoodService.RestoreComboFood(id);
         }
     }
 }
