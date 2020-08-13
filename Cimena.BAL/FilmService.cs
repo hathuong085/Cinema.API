@@ -53,7 +53,7 @@ namespace Cimena.BAL
 
         public Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
-            return filmRepository.GetFilmToDays();
+            return filmRepository.GetFilmsToDay();
         }
 
         public Task<IEnumerable<Film>> GetfilmUpComing(int cateid)
@@ -74,7 +74,10 @@ namespace Cimena.BAL
         {
             return filmRepository.UpdateFilm(film);
         }
-
+        public Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day)
+        {
+            return filmRepository.GetFilmsOfDay(day);
+        }
         public Task<IEnumerable<Film>> Getfilmsbyrate()
         {
             return filmRepository.Getfilmsbyrate();

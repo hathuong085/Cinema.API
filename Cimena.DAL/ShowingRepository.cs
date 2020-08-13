@@ -46,5 +46,10 @@ namespace Cimena.DAL
             parameters.Add("@showingId", id);
             return await SqlMapper.QueryAsync<Seat>(cnn: conn, sql: "sp_SeatsOfShowing", param: parameters, commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<IEnumerable<DayShow>> Top7DatesShow()
+        {
+            return await SqlMapper.QueryAsync<DayShow>(cnn: conn, sql: "sp_Top7DatesShow", commandType: CommandType.StoredProcedure);
+        }
     }
 }

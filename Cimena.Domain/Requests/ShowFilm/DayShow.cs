@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Cimena.Domain.Requests.ShowFilm
 {
-   public class ShowingOfFilmOfDayRequests
+    public class DayShow
     {
-        public int FilmId { get; set; }
-        public string DayShow { get; set; }
+        public string Day { get; set; }
     }
 }
