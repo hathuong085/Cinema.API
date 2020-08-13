@@ -143,6 +143,12 @@ namespace Cimena.DAL
                        sql: "sp_GetFilmNowShowing",
                        commandType: CommandType.StoredProcedure);
         }
-        
+
+        public async Task<IEnumerable<Film>> Getfilmsbyrate()
+        {
+            return await SqlMapper.QueryAsync<Film>(conn, "sp_showfilmByrate", CommandType.StoredProcedure);
+        }
+
+       
     }
 }
