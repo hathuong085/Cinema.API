@@ -74,6 +74,10 @@ namespace Cimena.BAL
         {
             return filmRepository.UpdateFilm(film);
         }
-        
+
+        public Task<IEnumerable<Film>> Getfilmsbyrate()
+        {
+            return filmRepository.Getfilmsbyrate();
+        }
     }
 }

@@ -19,5 +19,6 @@ namespace Cimena.DAL.INTERFACE
         Task<IEnumerable<Film>> GetFilmScreened(int cateid);
         Task<IEnumerable<Film>> GetFilmNowShowing(int cateid);
         Task<IEnumerable<Film>> GetfilmUpComing(int cateid);
+        Task<IEnumerable<Film>> Getfilmsbyrate();
     }
 }
