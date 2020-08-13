@@ -14,5 +14,6 @@ namespace Cimena.BAL.INTERFACE
         Task<IEnumerable<TimeShow>> ScreeningFilmOfDate(ShowingOfFilmOfDayRequests request);
         Task<IEnumerable<Seat>> SeatsOfShowing(int id);
         Task<DescriptionShowing> DescriptionShowing(int id);
+        Task<IEnumerable<DayShow>> Top7DatesShow();
     }
 }

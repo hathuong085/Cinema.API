@@ -6,6 +6,6 @@ namespace Cimena.Domain.Responses.Showing
 {
     public class Dayshow
     {
-        public DateTime day { get; set; }
+        public DateTime Day { get; set; }
     }
 }

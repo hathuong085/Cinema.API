@@ -49,5 +49,11 @@ namespace Cimena.API.Controllers
         {
             return await showingService.DescriptionShowing(id);
         }
+        [HttpGet]
+        [Route("/api/Showing/Top7DatesShow")]
+        public async Task<IEnumerable<DayShow>> Top7DatesShow()
+        {
+            return await showingService.Top7DatesShow();
+        }
     }
 }
