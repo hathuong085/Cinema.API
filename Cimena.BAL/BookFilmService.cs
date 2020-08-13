@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cimena.BAL
 {
-    public class BookFilmService : IBookFilmService
+    public class BookFilmService : IBookFilmService 
     {
         private readonly IBookFilmRepository bookFilmRepository;
 

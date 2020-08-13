@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Responses\ComboFood\" />
     <Folder Include="Responses\Order\" />
   </ItemGroup>
 </Project>

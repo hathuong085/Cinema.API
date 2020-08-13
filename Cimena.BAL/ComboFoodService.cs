@@ -21,9 +21,19 @@ namespace Cimena.BAL
             return await comboFoodRepository.DeleteComboFood(cfid);
         }
 
+        public async Task<DeleteCFResult> RestoreComboFood(int cfid)
+        {
+            return await comboFoodRepository.RestoreComboFood(cfid);
+        }
+
         public async Task<ComboFood> Get(int cfid)
         {
             return await comboFoodRepository.Get(cfid);
+        }
+
+        public Task<IEnumerable<ComboFoodAll>> GetAll()
+        {
+            return comboFoodRepository.GetAll();
         }
 
         public async Task<IEnumerable<ComboFood>> Gets()

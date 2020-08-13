@@ -19,7 +19,15 @@ namespace Cimena.DAL
                             sql: "DeleteComboFood",
                             commandType: CommandType.StoredProcedure);
         }
-
+        public async Task<DeleteCFResult> RestoreComboFood(int cfid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ComboFoodId", cfid);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteCFResult>(cnn: conn,
+                             param: parameters,
+                            sql: "sp_RestoreComboFood",
+                            commandType: CommandType.StoredProcedure);
+        }
         public async Task<ComboFood> Get(int cfid)
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -28,6 +36,11 @@ namespace Cimena.DAL
                              param: parameters,
                             sql: "GetComboFoodById",
                             commandType: CommandType.StoredProcedure));
+        }
+
+        public async Task<IEnumerable<ComboFoodAll>> GetAll()
+        {
+            return await SqlMapper.QueryAsync<ComboFoodAll>(conn, "sp_GetAllComboFood", CommandType.StoredProcedure);
         }
 
         public async Task<IEnumerable<ComboFood>> Gets()
