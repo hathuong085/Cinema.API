@@ -8,7 +8,8 @@ namespace Cimena.DAL
         protected IDbConnection conn;
         public BaseRepository()
         {
-            string connectionString = @"Data Source=DESKTOP-E754EJE\sqlexpress;Initial Catalog=MovieDB;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-RT5NF5I\sqlexpress;Initial Catalog=MovieDB;Integrated Security=True";
+           // string connectionString = @"workstation id=databasecinemanpt.mssql.somee.com;packet size=4096;user id=CinemaNPT_SQLLogin_1;pwd=eqhaomi99y;data source=databasecinemanpt.mssql.somee.com;persist security info=False;initial catalog=databasecinemanpt";
             conn = new SqlConnection(connectionString);
         }
     }
