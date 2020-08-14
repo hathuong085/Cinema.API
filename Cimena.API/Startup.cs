@@ -41,6 +41,8 @@ namespace Cimena.API
             services.AddScoped<IBookFilmService, BookFilmService>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IRoomSevice, RoomSevice>();
+            services.AddScoped<IEventRepository, EventReposirory>();
+            services.AddScoped<IEventService, EventService>();
             services.AddSwaggerGen();
         }
 
