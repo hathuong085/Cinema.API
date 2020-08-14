@@ -21,7 +21,7 @@ namespace Cimena.API.Controllers
         }
         [HttpGet]
         [Route("/api/event/gets")]
-        public async Task<IEnumerable<Event>> Gets()
+        public async Task<IEnumerable<EventDelete>> Gets()
         {
             return await eventService.Gets();
         }
@@ -49,6 +49,12 @@ namespace Cimena.API.Controllers
         public async Task<DeleteEventResult> DeleteEvent(int id)
         {
             return await eventService.DeleteEvent(id);
+        }
+        [HttpGet]
+        [Route("/api/event/restore/{id}")]
+        public async Task<DeleteEventResult> RestoreEvent(int id)
+        {
+            return await eventService.RestoreEvent(id);
         }
     }
 }

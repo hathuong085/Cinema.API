@@ -26,13 +26,17 @@ namespace Cimena.BAL
         {
             return  eventRepository.DeleteEvent(eventid);
         }
+        public Task<DeleteEventResult> RestoreEvent(int eventid)
+        {
+            return eventRepository.RestoreEvent(eventid);
+        }
 
         public Task<Event> Get(int eventid)
         {
             return eventRepository.Get(eventid);
         }
 
-        public Task<IEnumerable<Event>> Gets()
+        public Task<IEnumerable<EventDelete>> Gets()
         {
             return eventRepository.Gets();
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cimena.Domain.Responses.Event
 {
-   public class EventDelete
+   public class EventDelete:Event
     {
         public bool IsDeleted { get; set; }
     }

@@ -9,10 +9,11 @@ namespace Cimena.DAL.INTERFACE
 {
    public interface IEventRepository
     {
-        Task<IEnumerable<Event>> Gets();
+        Task<IEnumerable<EventDelete>> Gets();
         Task<Event> Get(int eventid);
         Task<SaveEventResult> CreateEvent(CreateEvent request);
         Task<SaveEventResult> UpdateEvent(Event request);
         Task<DeleteEventResult> DeleteEvent(int eventid);
+        Task<DeleteEventResult> RestoreEvent(int eventid);
     }
 }

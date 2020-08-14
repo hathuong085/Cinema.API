@@ -25,7 +25,7 @@ namespace Cimena.DAL
                             sql: "sp_CreateEvent",
                             commandType: CommandType.StoredProcedure));
         }
-
+        
         public async Task<DeleteEventResult> DeleteEvent(int eventid)
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -33,6 +33,15 @@ namespace Cimena.DAL
             return await SqlMapper.QueryFirstOrDefaultAsync<DeleteEventResult>(cnn: conn,
                              param: parameters,
                             sql: "sp_DeleteEventById",
+                            commandType: CommandType.StoredProcedure);
+        }
+        public async Task<DeleteEventResult> RestoreEvent(int eventid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@EventId", eventid);
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteEventResult>(cnn: conn,
+                             param: parameters,
+                            sql: "sp_RestoreEventById",
                             commandType: CommandType.StoredProcedure);
         }
 
@@ -46,9 +55,9 @@ namespace Cimena.DAL
                             commandType: CommandType.StoredProcedure));
         }
 
-        public async Task<IEnumerable<Event>> Gets()
+        public async Task<IEnumerable<EventDelete>> Gets()
         {
-            return await SqlMapper.QueryAsync<Event>(conn, "sp_GetEvents", CommandType.StoredProcedure);
+            return await SqlMapper.QueryAsync<EventDelete>(conn, "sp_GetEvents", CommandType.StoredProcedure);
         }
 
         public async Task<SaveEventResult> UpdateEvent(Event request)
