@@ -9,7 +9,9 @@ namespace Cimena.Domain.Responses.CategoryFilm
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public int Count { get; set; }
+        public int CountUpcoming { get; set; }
+        public int CountScreened{ get; set; }
+        public int CountNowShowing { get; set; }
     }
 
 }

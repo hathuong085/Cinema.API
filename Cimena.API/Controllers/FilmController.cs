@@ -87,7 +87,7 @@ namespace Cimena.API.Controllers
 
         [HttpPost]
         [Route("/api/film/GetFilmsOfDay")]
-        public async Task<IEnumerable<Film>> GetFilmNowShowing(DayRequests day)
+        public async Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day)
         {
             return await filmService.GetFilmsOfDay(day);
         }
