@@ -42,5 +42,10 @@ namespace Cimena.BAL
         {
             return showingRepository.SeatsOfShowing(id);
         }
+
+        public Task<IEnumerable<DayShow>> Top7DatesShow()
+        {
+            return showingRepository.Top7DatesShow();
+        }
     }
 }
