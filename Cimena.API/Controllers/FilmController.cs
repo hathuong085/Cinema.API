@@ -105,5 +105,12 @@ namespace Cimena.API.Controllers
             return await filmService.Searchfilm(Key);
         }
 
+        [HttpPost]
+        [Route("/api/Film/rating")]
+        public async Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            return await filmService.Ratefilm(film);
+        }
+
     }
 }

@@ -21,6 +21,8 @@ namespace Cimena.BAL.INTERFACE
         Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day);
         Task<IEnumerable<Film>> Getfilmsbyrate();
         Task<IEnumerable<Film>> Searchfilm(KeySearch Key);
+
+        Task<SaveRateResult> Ratefilm(CreateRateRequest film);
     }
 
 }
