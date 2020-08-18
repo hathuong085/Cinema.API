@@ -18,5 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Responses\Order\" />
+    <Folder Include="Responses\Rating\" />
   </ItemGroup>
 </Project>

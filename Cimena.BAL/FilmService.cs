@@ -87,5 +87,10 @@ namespace Cimena.BAL
         {
             return filmRepository.Searchfilm(Key);
         }
+
+        public Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            return filmRepository.Ratefilm(film);
+        }
     }
 }
