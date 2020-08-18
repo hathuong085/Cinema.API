@@ -1,4 +1,5 @@
-﻿using Cimena.Domain.Requests.ShowFilm;
+﻿using Cimena.Domain.Requests.Film;
+using Cimena.Domain.Requests.ShowFilm;
 using Cimena.Domain.Responses.Showing;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace Cimena.DAL.INTERFACE
         Task<IEnumerable<Seat>> SeatsOfShowing(int id);
         Task<DescriptionShowing> DescriptionShowing(int id);
         Task<IEnumerable<DayShow>> Top7DatesShow();
+        Task<IEnumerable<AllDesShwing>> GetAllShowing();
+        Task<IEnumerable<DayShow>> SearchDayshowByPeriod(SeacrhDayRequests requests);
+        Task<IEnumerable<TimeResult>> TimeEmptybyRoomDay(TimeRequests requests);
+        Task<CreateShowingResult> CreateShowing(CreateShowingRequests requests);
 
     }
 }

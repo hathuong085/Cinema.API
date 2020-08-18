@@ -1,4 +1,5 @@
 ﻿using Cimena.BAL.INTERFACE;
+using Cimena.Domain.Requests.Film;
 using Cimena.Domain.Requests.ShowFilm;
 using Cimena.Domain.Responses.Showing;
 using Microsoft.AspNetCore.Mvc;
@@ -54,6 +55,30 @@ namespace Cimena.API.Controllers
         public async Task<IEnumerable<DayShow>> Top7DatesShow()
         {
             return await showingService.Top7DatesShow();
+        }
+        [HttpGet]
+        [Route("/api/Showing/GetAllShowing")]
+        public async Task<IEnumerable<AllDesShwing>> GetAllShowing()
+        {
+            return await showingService.GetAllShowing();
+        }
+        [HttpPost]
+        [Route("/api/Showing/SearchDayshowByPeriod")]
+        public async Task<IEnumerable<DayShow>> SearchDayshowByPeriod(SeacrhDayRequests requests)
+        {
+            return await showingService.SearchDayshowByPeriod(requests);
+        }
+        [HttpPost]
+        [Route("/api/Showing/TimeEmptyByRoomDay")]
+        public async Task<IEnumerable<TimeResult>> TimeEmptyByRoomDay(TimeRequests requests)
+        {
+            return await showingService.TimeEmptybyRoomDay(requests);
+        }
+        [HttpPost]
+        [Route("/api/Showing/Create")]
+        public async Task<CreateShowingResult> CreateFilm(CreateShowingRequests requests)
+        {
+            return await showingService.CreateShowing(requests);
         }
     }
 }
