@@ -1,9 +1,13 @@
+using Cimena.API.DbContext;
 using Cimena.BAL;
 using Cimena.BAL.INTERFACE;
 using Cimena.DAL;
 using Cimena.DAL.INTERFACE;
+using Cimena.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +27,9 @@ namespace Cimena.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Common.connectionString));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddScoped<IFilmService, FilmService>();
             services.AddScoped<ICategoryFilmRepository,CategoryFilmRepository>();
