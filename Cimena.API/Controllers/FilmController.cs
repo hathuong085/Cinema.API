@@ -19,6 +19,12 @@ namespace Cimena.API.Controllers
             this.filmService = filmService;
         }
         [HttpGet]
+        [Route("/api/film/GetfilmsByrate")]
+        public async Task<IEnumerable<Film>> GetfilmsByrate()
+        {
+            return await filmService.Getfilmsbyrate();
+        }
+        [HttpGet]
         [Route("/api/Home/FilmToDays")]
         public async Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
@@ -92,18 +98,28 @@ namespace Cimena.API.Controllers
             return await filmService.GetFilmsOfDay(day);
         }
         [HttpGet]
-        [Route("/api/film/GetfilmsByrate")]
-        public async Task<IEnumerable<Film>> GetfilmsByrate()
+        [Route("/api/film/GetfilmsNew")]
+        public async Task<IEnumerable<Film>> GetfilmsNew()
         {
-            return await filmService.Getfilmsbyrate();
+            return await filmService.GetFilmsNew();
         }
-
+        [HttpGet]
+        [Route("/api/film/GetfilmsNowComing")]
+        public async Task<IEnumerable<Film>> GetfilmsNowComing()
+        {
+            return await filmService.GetFilmsNowComing();
+        }
         [HttpPost]
         [Route("/api/film/Searchfilm")]
         public async Task<IEnumerable<Film>> Searchfilm(KeySearch Key)
         {
             return await filmService.Searchfilm(Key);
         }
-
+        [HttpPost]
+        [Route("/api/film/GetFilmsByPeriod")]
+        public async Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
+        {
+            return await filmService.GetFilmsByPeriod(requests);
+        }
     }
 }

@@ -29,7 +29,29 @@ namespace Cimena.DAL
             }
             
         }
+        /// <summary>
+        /// Tìm kiếm các phim sẽ chiếu trong 1 khoảng thời gian
+        /// </summary>
+        /// <param name="requests"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ToDate", requests.ToDate);
+                parameters.Add("@FromDate", requests.FromDate);
+                return (await SqlMapper.QueryAsync<Film>(cnn: conn,
+                                 param: parameters,
+                                sql: "sp_SearchFilmByPeriod",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
 
+        }
         public async Task<IEnumerable<FilmToDay>> GetFilmsToDay()
         {
             return await SqlMapper.QueryAsync<FilmToDay>(conn, "sp_GetsFilmToDay", CommandType.StoredProcedure);
@@ -39,7 +61,14 @@ namespace Cimena.DAL
         {
             return await SqlMapper.QueryAsync<Film>(conn, "sp_HomeFilms", CommandType.StoredProcedure);
         }
-
+        public async Task<IEnumerable<Film>> GetFilmsNew()
+        {
+            return await SqlMapper.QueryAsync<Film>(conn, "sp_Getfilmnew", CommandType.StoredProcedure);
+        }
+        public async Task<IEnumerable<Film>> GetFilmsNowComing()
+        {
+            return await SqlMapper.QueryAsync<Film>(conn, "sp_GetFilmNowComing", CommandType.StoredProcedure);
+        }
         public async Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
         {
             try
