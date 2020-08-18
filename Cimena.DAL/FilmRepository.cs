@@ -196,5 +196,24 @@ namespace Cimena.DAL
                        sql: "sp_Searchfilm",
                        commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@FilmId", film.FilmId);
+                parameters.Add("@Rate", film.Rate);
+              
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveRateResult>(cnn: conn,
+                                 param: parameters,
+                                sql: "sp_Getrate",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

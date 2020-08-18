@@ -115,11 +115,22 @@ namespace Cimena.API.Controllers
         {
             return await filmService.Searchfilm(Key);
         }
+<<<<<<< HEAD
         [HttpPost]
         [Route("/api/film/GetFilmsByPeriod")]
         public async Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
         {
             return await filmService.GetFilmsByPeriod(requests);
         }
+=======
+
+        [HttpPost]
+        [Route("/api/Film/rating")]
+        public async Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            return await filmService.Ratefilm(film);
+        }
+
+>>>>>>> Developer
     }
 }

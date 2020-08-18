@@ -88,6 +88,7 @@ namespace Cimena.BAL
             return filmRepository.Searchfilm(Key);
         }
 
+<<<<<<< HEAD
         public Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
         {
             return filmRepository.GetFilmsByPeriod(requests);
@@ -101,6 +102,11 @@ namespace Cimena.BAL
         public Task<IEnumerable<Film>> GetFilmsNowComing()
         {
             return filmRepository.GetFilmsNowComing();
+=======
+        public Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            return filmRepository.Ratefilm(film);
+>>>>>>> Developer
         }
     }
 }
