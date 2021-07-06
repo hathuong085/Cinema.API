@@ -15,6 +15,20 @@ namespace Cimena.BAL.INTERFACE
         Task<SaveFilmResult> CreateFilm(CreateFilmRequest film);
         Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film);
         Task<SaveFilmResult> DeleteFilm(int filmId);
+        Task<IEnumerable<Film>> GetFilmScreened(int cateid);
+        Task<IEnumerable<Film>> GetfilmUpComing(int cateid);
+        Task<IEnumerable<Film>> GetFilmNowShowing(int cateid);
+        Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day);
+        Task<IEnumerable<Film>> Getfilmsbyrate();
+        Task<IEnumerable<Film>> GetFilmsNew();
+        Task<IEnumerable<Film>> GetFilmsNowComing();
+        Task<IEnumerable<Film>> Searchfilm(KeySearch Key);
+<<<<<<< HEAD
+        Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests);
+=======
+
+        Task<SaveRateResult> Ratefilm(CreateRateRequest film);
+>>>>>>> Developer
     }
 
 }

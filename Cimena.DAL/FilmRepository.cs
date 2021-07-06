@@ -29,8 +29,30 @@ namespace Cimena.DAL
             }
             
         }
+        /// <summary>
+        /// Tìm kiếm các phim sẽ chiếu trong 1 khoảng thời gian
+        /// </summary>
+        /// <param name="requests"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ToDate", requests.ToDate);
+                parameters.Add("@FromDate", requests.FromDate);
+                return (await SqlMapper.QueryAsync<Film>(cnn: conn,
+                                 param: parameters,
+                                sql: "sp_SearchFilmByPeriod",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
 
-        public async Task<IEnumerable<FilmToDay>> GetFilmToDays()
+        }
+        public async Task<IEnumerable<FilmToDay>> GetFilmsToDay()
         {
             return await SqlMapper.QueryAsync<FilmToDay>(conn, "sp_GetsFilmToDay", CommandType.StoredProcedure);
         }
@@ -39,7 +61,14 @@ namespace Cimena.DAL
         {
             return await SqlMapper.QueryAsync<Film>(conn, "sp_HomeFilms", CommandType.StoredProcedure);
         }
-
+        public async Task<IEnumerable<Film>> GetFilmsNew()
+        {
+            return await SqlMapper.QueryAsync<Film>(conn, "sp_Getfilmnew", CommandType.StoredProcedure);
+        }
+        public async Task<IEnumerable<Film>> GetFilmsNowComing()
+        {
+            return await SqlMapper.QueryAsync<Film>(conn, "sp_GetFilmNowComing", CommandType.StoredProcedure);
+        }
         public async Task<SaveFilmResult> CreateFilm(CreateFilmRequest film)
         {
             try
@@ -113,6 +142,78 @@ namespace Cimena.DAL
                              param: parameters,
                             sql: "sp_GetFilmById",
                             commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<Film>> GetFilmScreened(int cateid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateid);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_GetFilmScreened",
+                       commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<Film>> GetfilmUpComing(int cateid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateid);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_GetfilmUpComing",
+                       commandType: CommandType.StoredProcedure);
+        }
+        public async Task<IEnumerable<Film>> GetFilmNowShowing(int cateid)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CateId", cateid);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_GetFilmNowShowing",
+                       commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Day", day.Day);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_FilmOfDate",
+                       commandType: CommandType.StoredProcedure); ;
+        }
+        public async Task<IEnumerable<Film>> Getfilmsbyrate()
+        {
+            return await SqlMapper.QueryAsync<Film>(conn, "sp_showfilmByrate", CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<Film>> Searchfilm(KeySearch Key)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@key", Key.key);
+            return await SqlMapper.QueryAsync<Film>(cnn: conn,
+                       param: parameters,
+                       sql: "sp_Searchfilm",
+                       commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@FilmId", film.FilmId);
+                parameters.Add("@Rate", film.Rate);
+              
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveRateResult>(cnn: conn,
+                                 param: parameters,
+                                sql: "sp_Getrate",
+                                commandType: CommandType.StoredProcedure));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Cimena.DAL.INTERFACE
 {
     public interface IFilmRepository
     {
-        Task<IEnumerable<FilmToDay>> GetFilmToDays();
+        Task<IEnumerable<FilmToDay>> GetFilmsToDay();
         Task<IEnumerable<Film>> GetFilmByCateFilmId(int cateid);
         Task<Film> Get(int filmid);
         Task<ShowingsOfFilmOfDay> GetFilmsOfDay(ShowingsOfFilmOfDayRequeste requests);
@@ -16,6 +16,19 @@ namespace Cimena.DAL.INTERFACE
         Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film);
         Task<SaveFilmResult> DeleteFilm(int filmId);
 
+        Task<IEnumerable<Film>> GetFilmScreened(int cateid);
+        Task<IEnumerable<Film>> GetFilmNowShowing(int cateid);
+        Task<IEnumerable<Film>> GetfilmUpComing(int cateid);
+        Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day);
+        Task<IEnumerable<Film>> Getfilmsbyrate();
+        Task<IEnumerable<Film>> GetFilmsNew();
+        Task<IEnumerable<Film>> GetFilmsNowComing();
+        Task<IEnumerable<Film>> Searchfilm(KeySearch Key);
+<<<<<<< HEAD
+        Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests);
+=======
 
+        Task<SaveRateResult> Ratefilm(CreateRateRequest film);
+>>>>>>> Developer
     }
 }

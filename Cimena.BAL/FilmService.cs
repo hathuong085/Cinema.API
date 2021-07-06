@@ -41,9 +41,28 @@ namespace Cimena.BAL
             return filmRepository.GetFilmByCateFilmId(cateid);
         }
 
+        /// <summary>
+        /// lấy ra các phim đã chiếu của 1 loại phim
+        /// </summary>
+        /// <param name="cateid"></param>
+        /// <returns></returns>
+        public Task<IEnumerable<Film>> GetFilmScreened(int cateid)
+        {
+            return filmRepository.GetFilmScreened(cateid);
+        }
+
         public Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
-            return filmRepository.GetFilmToDays();
+            return filmRepository.GetFilmsToDay();
+        }
+
+        public Task<IEnumerable<Film>> GetfilmUpComing(int cateid)
+        {
+            return filmRepository.GetfilmUpComing(cateid);
+        }
+        public Task<IEnumerable<Film>> GetFilmNowShowing(int cateid)
+        {
+            return filmRepository.GetFilmNowShowing(cateid);
         }
 
         public Task<IEnumerable<Film>> Homefilms()
@@ -54,6 +73,40 @@ namespace Cimena.BAL
         public Task<SaveFilmResult> UpdateFilm(UpdateFilmRequest film)
         {
             return filmRepository.UpdateFilm(film);
+        }
+        public Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day)
+        {
+            return filmRepository.GetFilmsOfDay(day);
+        }
+        public Task<IEnumerable<Film>> Getfilmsbyrate()
+        {
+            return filmRepository.Getfilmsbyrate();
+        }
+
+        public Task<IEnumerable<Film>> Searchfilm(KeySearch Key)
+        {
+            return filmRepository.Searchfilm(Key);
+        }
+
+<<<<<<< HEAD
+        public Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
+        {
+            return filmRepository.GetFilmsByPeriod(requests);
+        }
+
+        public Task<IEnumerable<Film>> GetFilmsNew()
+        {
+            return filmRepository.GetFilmsNew();
+        }
+
+        public Task<IEnumerable<Film>> GetFilmsNowComing()
+        {
+            return filmRepository.GetFilmsNowComing();
+=======
+        public Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            return filmRepository.Ratefilm(film);
+>>>>>>> Developer
         }
     }
 }

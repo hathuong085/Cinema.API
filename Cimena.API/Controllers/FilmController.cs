@@ -19,6 +19,12 @@ namespace Cimena.API.Controllers
             this.filmService = filmService;
         }
         [HttpGet]
+        [Route("/api/film/GetfilmsByrate")]
+        public async Task<IEnumerable<Film>> GetfilmsByrate()
+        {
+            return await filmService.Getfilmsbyrate();
+        }
+        [HttpGet]
         [Route("/api/Home/FilmToDays")]
         public async Task<IEnumerable<FilmToDay>> GetFilmToDays()
         {
@@ -66,5 +72,65 @@ namespace Cimena.API.Controllers
         {
             return await filmService.Get(id);
         }
+        [HttpGet]
+        [Route("/api/film/getfilmscreened/{id}")]
+        public async Task<IEnumerable<Film>> GetFilmScreened(int id)
+        {
+            return await filmService.GetFilmScreened(id);
+        }
+        [HttpGet]
+        [Route("/api/film/GetfilmUpComing/{id}")]
+        public async Task<IEnumerable<Film>> GetfilmUpComing(int id)
+        {
+            return await filmService.GetfilmUpComing(id);
+        }
+        [HttpGet]
+        [Route("/api/film/GetFilmNowShowing/{id}")]
+        public async Task<IEnumerable<Film>> GetFilmNowShowing(int id)
+        {
+            return await filmService.GetFilmNowShowing(id);
+        }
+
+        [HttpPost]
+        [Route("/api/film/GetFilmsOfDay")]
+        public async Task<IEnumerable<Film>> GetFilmsOfDay(DayRequests day)
+        {
+            return await filmService.GetFilmsOfDay(day);
+        }
+        [HttpGet]
+        [Route("/api/film/GetfilmsNew")]
+        public async Task<IEnumerable<Film>> GetfilmsNew()
+        {
+            return await filmService.GetFilmsNew();
+        }
+        [HttpGet]
+        [Route("/api/film/GetfilmsNowComing")]
+        public async Task<IEnumerable<Film>> GetfilmsNowComing()
+        {
+            return await filmService.GetFilmsNowComing();
+        }
+        [HttpPost]
+        [Route("/api/film/Searchfilm")]
+        public async Task<IEnumerable<Film>> Searchfilm(KeySearch Key)
+        {
+            return await filmService.Searchfilm(Key);
+        }
+<<<<<<< HEAD
+        [HttpPost]
+        [Route("/api/film/GetFilmsByPeriod")]
+        public async Task<IEnumerable<Film>> GetFilmsByPeriod(SeacrhDayRequests requests)
+        {
+            return await filmService.GetFilmsByPeriod(requests);
+        }
+=======
+
+        [HttpPost]
+        [Route("/api/Film/rating")]
+        public async Task<SaveRateResult> Ratefilm(CreateRateRequest film)
+        {
+            return await filmService.Ratefilm(film);
+        }
+
+>>>>>>> Developer
     }
 }
